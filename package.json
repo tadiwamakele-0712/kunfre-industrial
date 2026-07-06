@@ -1,0 +1,13 @@
+{
+  "name": "kunfre-industrial",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "profile:compress": "node compress-profile-images.mjs",
+    "profile:pdf": "node generate-pdf.mjs",
+    "compress:images": "node compress-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}
