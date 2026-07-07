@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunfre Enterprise — Company Profile</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #1a2332;
+      line-height: 1.45;
+      background: #e8edf4;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .web-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      background: #0c2340;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .web-toolbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .web-toolbar a.primary { background: #e8a317; color: #0c2340; border-color: #e8a317; font-weight: 600; }
+
+    @media print {
+      .web-toolbar { display: none; }
+      body { background: #fff; }
+    }
+
+    .page {
+      width: 210mm;
+      margin: 0 auto 24px;
+      background: #fff;
+      position: relative;
+      overflow: visible;
+      break-after: page;
+      page-break-after: always;
+      box-shadow: 0 8px 32px rgba(12, 35, 64, 0.12);
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .page.cover {
+        height: 297mm;
+      }
+
+      .page:last-child {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+    }
+
+    .page:last-child {
+      break-after: avoid;
+      page-break-after: avoid;
+      margin-bottom: 0;
+    }
+
+    .cover {
+      background: linear-gradient(135deg, #071525 0%, #0c2340 45%, #163a5f 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 50px 42px;
+      height: 297mm;
+      position: relative;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("profile-assets/cover-bg.webp") center/cover no-repeat;
+      opacity: 0.12;
+      mix-blend-mode: lighten;
+    }
+
+    .cover > * { position: relative; z-index: 1; text-shadow: 0 1px 12px rgba(7, 21, 37, 0.45); }
+
+    .cover-top { display: flex; flex-direction: column; gap: 0; }
+
+    .cover-logo { text-shadow: none; width: 170px; height: auto; margin-bottom: 14px; }
+    .cover-wordmark { width: 250px; height: auto; margin-bottom: 22px; }
+
+    .cover-badge {
+      display: inline-block;
+      background: rgba(232, 163, 23, 0.15);
+      border: 1px solid rgba(232, 163, 23, 0.45);
+      color: #e8a317;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .cover h1 { font-size: 42px; line-height: 1.05; margin-bottom: 8px; font-weight: 800; }
+    .cover .legal-name { font-size: 13px; opacity: 0.85; margin-bottom: 12px; }
+    .cover .tagline { font-size: 16px; opacity: 0.92; max-width: 480px; margin-bottom: 8px; }
+    .cover .motto { font-size: 20px; color: #e8a317; font-weight: 700; font-style: italic; margin-bottom: 24px; }
+
+    .cover-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 100%;
+    }
+
+    .cover-stat {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .cover-stat strong { display: block; font-size: 16px; color: #e8a317; margin-bottom: 3px; }
+    .cover-stat span { font-size: 9.5px; opacity: 0.85; line-height: 1.25; }
+
+    .cover-meta {
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 12px;
+      opacity: 0.9;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
+    }
+
+    .cover-meta p { margin: 0; }
+
+    .content {
+      padding: 28px 38px 34px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-title {
+      font-size: 19px;
+      color: #0c2340;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 3px solid #e8a317;
+      font-weight: 700;
+    }
+
+    .section-title.tight { margin-top: 14px; }
+
+    .lead { font-size: 12.5px; color: #333; margin-bottom: 12px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card {
+      background: #f4f7fb;
+      border: 1px solid #e8edf4;
+      border-left: 4px solid #0c2340;
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .card h3 { font-size: 12.5px; color: #0c2340; margin-bottom: 6px; }
+    .card p { font-size: 11px; color: #444; line-height: 1.4; }
+
+    ul.bullets { margin: 0 0 12px 16px; font-size: 11.5px; color: #333; }
+    ul.bullets li { margin-bottom: 5px; }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .value {
+      text-align: center;
+      background: #0c2340;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 8px;
+      font-size: 10.5px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .sectors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 0;
+    }
+
+    .sector {
+      background: #163a5f;
+      color: #fff;
+      border-radius: 7px;
+      padding: 8px 10px;
+      font-size: 10.5px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .service {
+      background: #f4f7fb;
+      border: 1px solid #e8edf4;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .service h4 { font-size: 11.5px; color: #0c2340; margin-bottom: 4px; }
+    .service p { font-size: 10.5px; color: #555; line-height: 1.35; }
+
+    .contact-box {
+      background: linear-gradient(135deg, #071525, #163a5f);
+      color: #fff;
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+    }
+
+    .contact-box h3 {
+      grid-column: 1 / -1;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #e8a317;
+    }
+
+    .contact-box p { font-size: 11px; margin: 0; }
+
+    .footer-note {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 9px;
+      color: #888;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .highlight { color: #e8a317; font-weight: 700; }
+
+    .overview-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 14px;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      background: #f4f7fb;
+      border: 1px solid #e8edf4;
+      border-radius: 10px;
+    }
+
+    .overview-box p { font-size: 11px; color: #444; margin: 0; }
+    .overview-box strong { color: #0c2340; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .photo-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e8edf4;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 64px;
+      object-fit: cover;
+      display: block;
+      flex: 1;
+    }
+
+    .photo-card figcaption {
+      padding: 6px 7px;
+      font-size: 9px;
+      color: #0c2340;
+      font-weight: 600;
+      background: #f4f7fb;
+      line-height: 1.2;
+    }
+
+    .photo-feature {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .photo-feature img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #e8edf4;
+    }
+
+    .photo-feature-text {
+      background: #f4f7fb;
+      border: 1px solid #e8edf4;
+      border-left: 4px solid #e8a317;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .photo-feature-text h3 { font-size: 13px; color: #0c2340; margin-bottom: 6px; }
+    .photo-feature-text p { font-size: 10.5px; color: #555; line-height: 1.4; }
+
+    .brand-strip {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding: 14px 16px;
+      background: #f4f7fb;
+      border: 1px solid #e8edf4;
+      border-radius: 10px;
+    }
+
+    .brand-strip img { height: 40px; width: auto; max-width: 90px; object-fit: contain; }
+
+    .field-services {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .field-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e8edf4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field-card img {
+      width: 100%;
+      height: 88px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .field-card .field-body {
+      padding: 8px 10px;
+      background: #fff;
+      flex: 1;
+    }
+
+    .field-card h4 { font-size: 10.5px; color: #0c2340; margin-bottom: 3px; }
+    .field-card p { font-size: 9.5px; color: #555; line-height: 1.3; }
+
+    .capabilities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .capability {
+      border: 1px solid #e8edf4;
+      border-radius: 8px;
+      padding: 9px 10px;
+      background: #fff;
+    }
+
+    .capability .num {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      color: #e8a317;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .capability h4 { font-size: 10.5px; color: #0c2340; margin-bottom: 3px; line-height: 1.2; }
+    .capability p { font-size: 9px; color: #555; line-height: 1.3; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .why-list { margin: 0; }
+
+    .copyright {
+      font-size: 10px;
+      color: #666;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="web-toolbar" aria-label="Profile actions">
+    <a href="index.html">← Back to Website</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="#" class="primary" onclick="window.print(); return false;">Save as PDF</a>
+  </nav>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <div class="cover-top">
+      <img src="profile-assets/kunfre-logo.webp" alt="Kunfre Enterprise" class="cover-logo" width="170" height="76">
+      <img src="profile-assets/download.webp" alt="Kunfre Enterprise" class="cover-wordmark" width="250" height="54">
+      <div class="cover-badge">Company Profile 2026</div>
+      <h1>Kunfre<br>Enterprise</h1>
+      <p class="legal-name">A trading name of Kunfre Hardware (Pvt) Ltd</p>
+      <p class="tagline">Industrial Sealing · Electrical · Electronics · Instrumentation</p>
+      <p class="motto">Pinnacle of Reliability</p>
+    </div>
+
+    <div class="cover-stats">
+      <div class="cover-stat"><strong>5+</strong><span>Years of Operation</span></div>
+      <div class="cover-stat"><strong>600+</strong><span>Product Lines</span></div>
+      <div class="cover-stat"><strong>ISO-Aligned</strong><span>Quality Standards</span></div>
+      <div class="cover-stat"><strong>Pan African and Asia</strong><span>Regional Coverage</span></div>
+    </div>
+
+    <div class="cover-meta">
+      <p><strong>Address:</strong> 32065 Mabvazuva, Ruwa, Harare, Zimbabwe</p>
+      <p><strong>Email:</strong> info.kunfrepvtltd@gmail.com</p>
+      <p><strong>Website:</strong> www.kunfre.com</p>
+      <p><strong>Phone:</strong> +263 719 333 422 · +263 783 249 344</p>
+      <p><strong>WhatsApp:</strong> +263 719 333 422</p>
+      <p><strong>Instagram:</strong> @kunfre_tek_</p>
+      <p><strong>Hours:</strong> Monday – Friday, 08:00 – 17:00</p>
+    </div>
+  </div>
+
+  <!-- PAGE 2: ABOUT -->
+  <div class="page content">
+    <h2 class="section-title">About Us</h2>
+    <p class="lead">
+      <strong>Kunfre Hardware (Pvt) Ltd</strong>, trading as <strong>Kunfre Enterprise</strong>, is a registered
+      Zimbabwean company and trusted supplier of industrial-grade sealing, fastening, electrical, instrumentation,
+      and security products. Over 5+ years we have built a reputation as a dependable partner to mining, oil &amp; gas,
+      construction, agriculture, water utilities, power generation, and manufacturing sectors across Zimbabwe.
+    </p>
+
+    <div class="photo-feature">
+      <img src="profile-assets/plant-visit.webp" alt="Kunfre technical team on site">
+      <div class="photo-feature-text">
+        <h3>On-Site Technical Support</h3>
+        <p>Our engineers visit client sites for plant inspections, product selection, borehole surveys, instrumentation commissioning, and security system installations across Zimbabwe.</p>
+      </div>
+    </div>
+
+    <div class="overview-box">
+      <p><strong>Legal name:</strong> Kunfre Hardware (Pvt) Ltd</p>
+      <p><strong>Trading as:</strong> Kunfre Enterprise</p>
+      <p><strong>Location:</strong> 32065 Mabvazuva, Ruwa, Harare, Zimbabwe</p>
+      <p><strong>Registration:</strong> Registered Zimbabwean company</p>
+    </div>
+
+    <h2 class="section-title tight">Mission &amp; Vision</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Our Mission</h3>
+        <p>To supply precision-grade industrial products and expert field services that keep Zimbabwe's critical
+        infrastructure, agriculture, mining, and manufacturing sectors running reliably.</p>
+      </div>
+      <div class="card">
+        <h3>Our Vision</h3>
+        <p>To be Zimbabwe's most trusted industrial supplier — recognised for quality, technical expertise, and
+        dependable delivery across sealing, fastening, flow control, water solutions, instrumentation, and security.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title tight">Core Values</h2>
+    <div class="values">
+      <div class="value">Quality &amp;<br>Traceability</div>
+      <div class="value">Technical<br>Expertise</div>
+      <div class="value">Pan African and Asia<br>Reach</div>
+      <div class="value">Reliability &amp;<br>Integrity</div>
+      <div class="value">Client-Focused<br>Solutions</div>
+      <div class="value">Industry<br>Excellence</div>
+    </div>
+
+    <h2 class="section-title tight">Sectors We Serve</h2>
+    <div class="sectors">
+      <div class="sector">Mining &amp; Quarrying</div>
+      <div class="sector">Construction &amp; Infrastructure</div>
+      <div class="sector">Agriculture &amp; Irrigation</div>
+      <div class="sector">Power Generation</div>
+      <div class="sector">Water Utilities &amp; Boreholes</div>
+      <div class="sector">General Manufacturing</div>
+    </div>
+
+    <div class="footer-note">
+      <span>Kunfre Enterprise — Company Profile</span>
+      <span>Page 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: PRODUCTS -->
+  <div class="page content">
+    <h2 class="section-title">Product Range</h2>
+    <p class="lead">600+ product lines across 9 core industrial categories — sealing, fastening, flow control, water solutions, instrumentation, industrial gases, and security.</p>
+
+    <div class="photo-grid">
+      <figure class="photo-card">
+        <img src="profile-assets/fasteners.webp" alt="Industrial fasteners">
+        <figcaption>Industrial Fasteners</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/bearings.webp" alt="Bearings">
+        <figcaption>Gaskets &amp; Bearings</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/ball-valves.webp" alt="Valves">
+        <figcaption>Industrial Valves</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/hoses.webp" alt="Hoses">
+        <figcaption>Seals &amp; Hoses</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/webbing.webp" alt="Webbing">
+        <figcaption>Webbing Tapes</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/gaskets.webp" alt="Gaskets">
+        <figcaption>Engineered Gaskets</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/stainless.webp" alt="Stainless fasteners">
+        <figcaption>Stainless Fasteners</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/gate-valves.webp" alt="Gate valves">
+        <figcaption>Gate Valves</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/mining-hose.webp" alt="Mining hose">
+        <figcaption>Mining Hose</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/ptfe-tape.webp" alt="PTFE tape">
+        <figcaption>PTFE Seal Tape</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/borehole.webp" alt="Borehole">
+        <figcaption>Borehole Services</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/solar.webp" alt="Solar panel installation on corrugated roof">
+        <figcaption>Electrical, Instrumentation &amp; Solar</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/cctv.webp" alt="Uniview Smart Intelligent Box CCTV system">
+        <figcaption>Security &amp; CCTV</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="section-title tight">Trusted Brands We Supply</h2>
+    <div class="brand-strip">
+      <img src="profile-assets/brand-skf.webp" alt="SKF">
+      <img src="profile-assets/brand-trelleborg.webp" alt="Trelleborg">
+      <img src="profile-assets/brand-nok.webp" alt="NOK">
+      <img src="profile-assets/brand-synergy.webp" alt="Synergy">
+      <img src="profile-assets/brand-hilite.webp" alt="Hilite">
+    </div>
+
+    <div class="footer-note">
+      <span>Kunfre Enterprise — Company Profile</span>
+      <span>Page 3</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: SERVICES -->
+  <div class="page content">
+    <h2 class="section-title">Field Services &amp; Installations</h2>
+    <p class="lead">End-to-end field services across Zimbabwe — from borehole drilling to solar installation and security system deployment.</p>
+
+    <div class="field-services">
+      <article class="field-card">
+        <img src="profile-assets/borehole.webp" alt="Borehole installation">
+        <div class="field-body">
+          <h4>Borehole &amp; Pump Services</h4>
+          <p>Survey, drilling, pump supply, rising mains, and rehabilitation.</p>
+        </div>
+      </article>
+      <article class="field-card">
+        <img src="profile-assets/solar-2.webp" alt="Solar panel installation team on site">
+        <div class="field-body">
+          <h4>Electrical, Instrumentation &amp; Solar</h4>
+          <p>Rooftop solar arrays, VSD drives, process sensors, and panel meters for farms, mines, and industrial sites.</p>
+        </div>
+      </article>
+      <article class="field-card">
+        <img src="profile-assets/cctv.webp" alt="Uniview Smart Intelligent Box NVR">
+        <div class="field-body">
+          <h4>Security &amp; CCTV</h4>
+          <p>Smart NVR systems, CCTV cameras, gate motors, intercoms, and access automation.</p>
+        </div>
+      </article>
+      <article class="field-card">
+        <img src="profile-assets/pumps.webp" alt="Pumps">
+        <div class="field-body">
+          <h4>Pump Supply</h4>
+          <p>Submersible pumps, suction &amp; delivery hose, and maintenance.</p>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title tight">9 Core Capabilities</h2>
+    <div class="capabilities">
+      <div class="capability">
+        <span class="num">01</span>
+        <h4>Webbing Tapes</h4>
+        <p>High-strength woven &amp; synthetic tapes for load securing and lifting.</p>
+      </div>
+      <div class="capability">
+        <span class="num">02</span>
+        <h4>Seals &amp; Hoses</h4>
+        <p>Sealing, belting, hose &amp; mechanical spares for plant maintenance.</p>
+      </div>
+      <div class="capability">
+        <span class="num">03</span>
+        <h4>Fasteners</h4>
+        <p>High-integrity bolting &amp; fixing solutions with full traceability.</p>
+      </div>
+      <div class="capability">
+        <span class="num">04</span>
+        <h4>Gaskets &amp; Bearings</h4>
+        <p>Engineered gaskets and bearings for piping and pressure systems.</p>
+      </div>
+      <div class="capability">
+        <span class="num">05</span>
+        <h4>Industrial Valves</h4>
+        <p>Flow control for process, utility &amp; infrastructure systems.</p>
+      </div>
+      <div class="capability">
+        <span class="num">06</span>
+        <h4>Borehole Services</h4>
+        <p>Complete water solutions for agriculture, industry &amp; communities.</p>
+      </div>
+      <div class="capability">
+        <span class="num">07</span>
+        <h4>Electrical, Instrumentation &amp; Solar</h4>
+        <p>VSD drives, process sensors, rooftop solar arrays, and panel meters for process control.</p>
+      </div>
+      <div class="capability">
+        <span class="num">08</span>
+        <h4>Security &amp; CCTV</h4>
+        <p>CCTV, access automation &amp; security systems for all site types.</p>
+      </div>
+      <div class="capability">
+        <span class="num">09</span>
+        <h4>Industrial Gas Tanks</h4>
+        <p>Industrial gas tanks — LNG, oxygen, argon &amp; carbon dioxide.</p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span>Kunfre Enterprise — Company Profile</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: SERVICES & WHY -->
+  <div class="page content">
+    <h2 class="section-title">Key Services</h2>
+    <div class="services">
+      <div class="service">
+        <h4>Industrial Fasteners &amp; Bolting</h4>
+        <p>Hex bolts, stainless fasteners, stud bolts, and anchor systems with mill certification.</p>
+      </div>
+      <div class="service">
+        <h4>Seals, Hoses &amp; Spares</h4>
+        <p>PTFE tape, hydraulic and mining hose, bearings, packings, and rubber sheeting.</p>
+      </div>
+      <div class="service">
+        <h4>Borehole &amp; Water Solutions</h4>
+        <p>Survey, drilling, pump supply, rising mains, and rehabilitation across Zimbabwe.</p>
+      </div>
+      <div class="service">
+        <h4>Electrical, Instrumentation &amp; Solar</h4>
+        <p>VSD drives, process sensors, rooftop solar installation, and panel meters.</p>
+      </div>
+      <div class="service">
+        <h4>Security &amp; Automation</h4>
+        <p>Smart NVR systems, CCTV cameras, gate motors, intercoms, and access automation.</p>
+      </div>
+      <div class="service">
+        <h4>Valves, Gaskets &amp; Bearings</h4>
+        <p>Gate, ball, butterfly, and check valves plus spiral-wound gaskets.</p>
+      </div>
+      <div class="service">
+        <h4>Industrial Gas Tanks</h4>
+        <p>High-capacity industrial gas tanks — LNG, oxygen, argon, and carbon dioxide supply.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title tight">Why Partner With Kunfre</h2>
+    <div class="why-grid">
+      <ul class="bullets why-list">
+        <li><span class="highlight">ISO-aligned quality</span> — third-party inspection and certified material test reports on request.</li>
+        <li><span class="highlight">Technical expertise</span> — engineers guide clients to the right solution for demanding environments.</li>
+        <li><span class="highlight">Pan African and Asia reach</span> — supply and field services across the region.</li>
+      </ul>
+      <ul class="bullets why-list">
+        <li><span class="highlight">Comprehensive catalogue</span> — 600+ product lines across 9 industrial categories.</li>
+        <li><span class="highlight">End-to-end services</span> — from product supply to borehole installation and security deployment.</li>
+        <li><span class="highlight">Industry experience</span> — 5+ years serving mining, construction, agriculture, and manufacturing.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title tight">Contact Information</h2>
+    <div class="contact-box">
+      <h3>Kunfre Enterprise</h3>
+      <p><strong>Legal Entity:</strong> Kunfre Hardware (Pvt) Ltd</p>
+      <p><strong>Address:</strong> 32065 Mabvazuva, Ruwa, Harare, Zimbabwe</p>
+      <p><strong>Email:</strong> info.kunfrepvtltd@gmail.com</p>
+      <p><strong>Website:</strong> www.kunfre.com</p>
+      <p><strong>Phone:</strong> +263 719 333 422 · +263 783 249 344</p>
+      <p><strong>WhatsApp:</strong> +263 719 333 422</p>
+      <p><strong>Instagram:</strong> @kunfre_tek_</p>
+      <p><strong>Hours:</strong> Monday – Friday, 08:00 – 17:00</p>
+      <p><strong>Focus:</strong> Sealing · Fasteners · Valves · Borehole · Instrumentation · Security</p>
+    </div>
+
+    <p class="copyright">
+      © 2026 Kunfre Enterprise · Kunfre Hardware (Pvt) Ltd. All Rights Reserved.<br>
+      <em>Pinnacle of Reliability — Industrial Sealing · Electrical · Electronics · Instrumentation</em>
+    </p>
+
+    <div class="footer-note">
+      <span>Kunfre Enterprise — Company Profile</span>
+      <span>Page 5</span>
+    </div>
+  </div>
+
+</body>
+</html>
