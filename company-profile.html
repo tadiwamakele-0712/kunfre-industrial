@@ -49,20 +49,40 @@
 
     .page {
       width: 210mm;
-      height: 297mm;
       margin: 0 auto 24px;
       background: #fff;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+      break-after: page;
       page-break-after: always;
       box-shadow: 0 8px 32px rgba(12, 35, 64, 0.12);
     }
 
     @media print {
-      .page { margin: 0; box-shadow: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .page.cover {
+        height: 297mm;
+      }
+
+      .page:last-child {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
     }
 
-    .page:last-child { page-break-after: auto; margin-bottom: 0; }
+    .page:last-child {
+      break-after: avoid;
+      page-break-after: avoid;
+      margin-bottom: 0;
+    }
 
     .cover {
       background: linear-gradient(135deg, #071525 0%, #0c2340 45%, #163a5f 100%);
@@ -141,8 +161,7 @@
     .cover-meta p { margin: 0; }
 
     .content {
-      padding: 30px 40px 38px;
-      height: 297mm;
+      padding: 28px 38px 34px;
       display: flex;
       flex-direction: column;
     }
@@ -184,8 +203,8 @@
     .values {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 10px;
     }
 
     .value {
@@ -202,7 +221,7 @@
     .sectors {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 0;
     }
 
@@ -220,8 +239,8 @@
     .services {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .service {
@@ -284,7 +303,6 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin-bottom: 12px;
-      flex: 1;
     }
 
     .photo-card {
@@ -298,7 +316,7 @@
 
     .photo-card img {
       width: 100%;
-      height: 72px;
+      height: 64px;
       object-fit: cover;
       display: block;
       flex: 1;
@@ -389,10 +407,9 @@
 
     .capabilities {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      margin-bottom: 12px;
-      flex: 1;
+      margin-bottom: 10px;
     }
 
     .capability {
@@ -418,8 +435,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 12px;
-      flex: 1;
+      margin-bottom: 10px;
     }
 
     .why-list { margin: 0; }
@@ -539,7 +555,7 @@
   <!-- PAGE 3: PRODUCTS -->
   <div class="page content">
     <h2 class="section-title">Product Range</h2>
-    <p class="lead">600+ product lines across 8 core industrial categories — sealing, fastening, flow control, water solutions, instrumentation, and security.</p>
+    <p class="lead">600+ product lines across 9 core industrial categories — sealing, fastening, flow control, water solutions, instrumentation, industrial gases, and security.</p>
 
     <div class="photo-grid">
       <figure class="photo-card">
@@ -587,8 +603,12 @@
         <figcaption>Borehole Services</figcaption>
       </figure>
       <figure class="photo-card">
-        <img src="profile-assets/solar.webp" alt="Solar">
-        <figcaption>Solar Installation</figcaption>
+        <img src="profile-assets/solar.webp" alt="Solar panel installation on corrugated roof">
+        <figcaption>Electrical, Instrumentation &amp; Solar</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img src="profile-assets/cctv.webp" alt="Uniview Smart Intelligent Box CCTV system">
+        <figcaption>Security &amp; CCTV</figcaption>
       </figure>
     </div>
 
@@ -621,17 +641,17 @@
         </div>
       </article>
       <article class="field-card">
-        <img src="profile-assets/solar.webp" alt="Solar installation">
+        <img src="profile-assets/solar-2.webp" alt="Solar panel installation team on site">
         <div class="field-body">
-          <h4>Solar Installation</h4>
-          <p>Electrical and solar systems for farms, mines, and industrial sites.</p>
+          <h4>Electrical, Instrumentation &amp; Solar</h4>
+          <p>Rooftop solar arrays, VSD drives, process sensors, and panel meters for farms, mines, and industrial sites.</p>
         </div>
       </article>
       <article class="field-card">
-        <img src="profile-assets/cctv.webp" alt="CCTV">
+        <img src="profile-assets/cctv.webp" alt="Uniview Smart Intelligent Box NVR">
         <div class="field-body">
           <h4>Security &amp; CCTV</h4>
-          <p>CCTV, gate motors, intercoms, and access automation.</p>
+          <p>Smart NVR systems, CCTV cameras, gate motors, intercoms, and access automation.</p>
         </div>
       </article>
       <article class="field-card">
@@ -643,7 +663,7 @@
       </article>
     </div>
 
-    <h2 class="section-title tight">8 Core Capabilities</h2>
+    <h2 class="section-title tight">9 Core Capabilities</h2>
     <div class="capabilities">
       <div class="capability">
         <span class="num">01</span>
@@ -677,17 +697,30 @@
       </div>
       <div class="capability">
         <span class="num">07</span>
-        <h4>Instrumentation &amp; Solar</h4>
-        <p>Process instrumentation, drives &amp; solar for process control.</p>
+        <h4>Electrical, Instrumentation &amp; Solar</h4>
+        <p>VSD drives, process sensors, rooftop solar arrays, and panel meters for process control.</p>
       </div>
       <div class="capability">
         <span class="num">08</span>
         <h4>Security &amp; CCTV</h4>
         <p>CCTV, access automation &amp; security systems for all site types.</p>
       </div>
+      <div class="capability">
+        <span class="num">09</span>
+        <h4>Industrial Gas Tanks</h4>
+        <p>Industrial gas tanks — LNG, oxygen, argon &amp; carbon dioxide.</p>
+      </div>
     </div>
 
-    <h2 class="section-title tight">Key Services</h2>
+    <div class="footer-note">
+      <span>Kunfre Enterprise — Company Profile</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: SERVICES & WHY -->
+  <div class="page content">
+    <h2 class="section-title">Key Services</h2>
     <div class="services">
       <div class="service">
         <h4>Industrial Fasteners &amp; Bolting</h4>
@@ -702,28 +735,24 @@
         <p>Survey, drilling, pump supply, rising mains, and rehabilitation across Zimbabwe.</p>
       </div>
       <div class="service">
-        <h4>Instrumentation &amp; Solar</h4>
-        <p>VSD drives, process sensors, solar installation, and panel meters.</p>
+        <h4>Electrical, Instrumentation &amp; Solar</h4>
+        <p>VSD drives, process sensors, rooftop solar installation, and panel meters.</p>
       </div>
       <div class="service">
         <h4>Security &amp; Automation</h4>
-        <p>CCTV systems, gate motors, intercoms, and access automation.</p>
+        <p>Smart NVR systems, CCTV cameras, gate motors, intercoms, and access automation.</p>
       </div>
       <div class="service">
         <h4>Valves, Gaskets &amp; Bearings</h4>
         <p>Gate, ball, butterfly, and check valves plus spiral-wound gaskets.</p>
       </div>
+      <div class="service">
+        <h4>Industrial Gas Tanks</h4>
+        <p>High-capacity industrial gas tanks — LNG, oxygen, argon, and carbon dioxide supply.</p>
+      </div>
     </div>
 
-    <div class="footer-note">
-      <span>Kunfre Enterprise — Company Profile</span>
-      <span>Page 4</span>
-    </div>
-  </div>
-
-  <!-- PAGE 5: WHY & CONTACT -->
-  <div class="page content">
-    <h2 class="section-title">Why Partner With Kunfre</h2>
+    <h2 class="section-title tight">Why Partner With Kunfre</h2>
     <div class="why-grid">
       <ul class="bullets why-list">
         <li><span class="highlight">ISO-aligned quality</span> — third-party inspection and certified material test reports on request.</li>
@@ -731,30 +760,10 @@
         <li><span class="highlight">Pan African and Asia reach</span> — supply and field services across the region.</li>
       </ul>
       <ul class="bullets why-list">
-        <li><span class="highlight">Comprehensive catalogue</span> — 600+ product lines across 8 industrial categories.</li>
+        <li><span class="highlight">Comprehensive catalogue</span> — 600+ product lines across 9 industrial categories.</li>
         <li><span class="highlight">End-to-end services</span> — from product supply to borehole installation and security deployment.</li>
         <li><span class="highlight">Industry experience</span> — 5+ years serving mining, construction, agriculture, and manufacturing.</li>
       </ul>
-    </div>
-
-    <h2 class="section-title tight">Company Summary</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Company Type</h3>
-        <p>Registered Zimbabwean industrial supplier and field services provider — trading as Kunfre Enterprise.</p>
-      </div>
-      <div class="card">
-        <h3>Geographic Coverage</h3>
-        <p>Pan African and Asia supply and on-site services across the region.</p>
-      </div>
-      <div class="card">
-        <h3>Key Sectors</h3>
-        <p>Mining, construction, agriculture, power generation, water utilities, and manufacturing.</p>
-      </div>
-      <div class="card">
-        <h3>Experience</h3>
-        <p>5+ years of operation with 600+ product lines and ISO-aligned quality standards.</p>
-      </div>
     </div>
 
     <h2 class="section-title tight">Contact Information</h2>

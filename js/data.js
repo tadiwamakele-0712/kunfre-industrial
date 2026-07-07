@@ -109,8 +109,11 @@ const CATEGORIES = [
     heroTitle: "Electrical, Instrumentation and Solar",
     heroDesc: "Electrical, instrumentation and solar solutions — drives, process sensors, panel meters, solar installation, and control consumables for accurate process control and automation. Process Optimization, System Integration, Calibration Precision, System Resilience, Commissioning Excellence.",
     description: "Electrical, instrumentation & solar — drives, process sensors, panel meters, solar systems & control consumables for accurate process control. Process Optimization, System Integration, Calibration Precision, System Resilience, Commissioning Excellence.",
-    image: "solar installation.jpg",
+    image: "73a2ac42-8890-4a01-ba17-77b50bac26fd.jpg",
     gallery: [
+      "73a2ac42-8890-4a01-ba17-77b50bac26fd.jpg",
+      "afd070ac-8ec3-455c-b27f-f6461051e897.jpg",
+      "e8dd1a55-2873-46db-b605-203872c4778b.jpg",
       "solar installation.jpg",
       "solar installation (2).jpg",
       "plant visit and ins.jpg"
@@ -124,8 +127,9 @@ const CATEGORIES = [
     heroTitle: "Security and CCTV",
     heroDesc: "CCTV, access automation and security systems for industrial and residential sites across Zimbabwe. Asset Protection, Perimeter Integrity, Proactive Security Infrastructure, Risk Mitigation, Real-Time Surveillance.",
     description: "CCTV, access automation & security systems for industrial and residential sites. Asset Protection, Perimeter Integrity, Proactive Security Infrastructure, Risk Mitigation, Real-Time Surveillance.",
-    image: "99cc0c95-318a-44b3-948e-34ff5fef7960.jpg",
+    image: "1156cbd8-0a15-4c0f-ba10-134b3a556af1.jpg",
     gallery: [
+      "1156cbd8-0a15-4c0f-ba10-134b3a556af1.jpg",
       "99cc0c95-318a-44b3-948e-34ff5fef7960.jpg",
       "28028016-7501-445d-8023-dd46563d968c.jpg",
       "fd0d468e-583f-43b7-86e4-8376b46fb319.jpg"
@@ -134,11 +138,11 @@ const CATEGORIES = [
   },
   {
     id: "gas",
-    name: "Gas Industrial",
-    label: "Industrial Gases",
-    heroTitle: "Gas Industrial & Cylinders",
-    heroDesc: "High-capacity industrial gas cylinders manufactured from durable steel or lightweight aluminum, engineered for safe storage and precise dispensing of industrial and specialty gases.",
-    description: "High-capacity industrial gas cylinders. Manufactured from durable steel or lightweight aluminum, engineered for safe storage and precise dispensing of industrial and specialty gases. Available in standard volumes and pressure ratings to meet your manufacturing and operational requirements.",
+    name: "Industrial Gas Tanks",
+    label: "Industrial Gas Tanks",
+    heroTitle: "Industrial Gas Tanks",
+    heroDesc: "High-capacity industrial gas tanks manufactured from durable steel or lightweight aluminum, engineered for safe storage and precise dispensing of industrial and specialty gases.",
+    description: "High-capacity industrial gas tanks. Manufactured from durable steel or lightweight aluminum, engineered for safe storage and precise dispensing of industrial and specialty gases. Available in standard volumes and pressure ratings to meet your manufacturing and operational requirements.",
     assetBase: "images/",
     image: "download.jpg",
     gallery: [
@@ -347,17 +351,17 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: "solar-pump-farm",
-    title: "Solar Pump System Installation",
+    title: "Rooftop Solar Panel Installation",
     sector: "Agriculture & Irrigation",
     filter: "agriculture",
     category: "Electrical, Instrumentation and Solar",
     location: "Mashonaland Central",
-    year: "2024",
+    year: "2025",
     featured: true,
     image: "profile-assets/solar.webp",
-    gallery: ["profile-assets/solar.webp", "profile-assets/solar-2.webp", "profile-assets/pumps.webp"],
-    description: "Designed and installed a solar-powered pump system for off-grid irrigation — panels, inverter, pump controller, and field wiring.",
-    scope: ["Solar panel array", "Pump controller & inverter", "Electrical installation", "System commissioning"]
+    gallery: ["profile-assets/solar.webp", "profile-assets/solar-2.webp", "profile-assets/solar-3.webp"],
+    description: "Supplied and installed a rooftop solar panel array — mounting rails, panel fitment, electrical wiring, and system commissioning for off-grid power.",
+    scope: ["Roof mounting rails", "Solar panel array", "Electrical installation", "System commissioning"]
   },
   {
     id: "cctv-warehouse",
@@ -367,11 +371,11 @@ const PORTFOLIO_PROJECTS = [
     category: "Security and CCTV",
     location: "Harare Industrial Area",
     year: "2025",
-    featured: false,
+    featured: true,
     image: "profile-assets/cctv.webp",
     gallery: ["profile-assets/cctv.webp", "profile-assets/security.webp"],
-    description: "Deployed a multi-camera CCTV system with remote monitoring, gate motor automation, and intercom access for a warehouse and distribution centre.",
-    scope: ["IP CCTV cameras", "NVR & remote viewing", "Gate motor automation", "Intercom system"]
+    description: "Deployed Uniview Smart Intelligent Box NVR systems (4–32 channels), IP CCTV cameras, remote monitoring, gate motor automation, and intercom access for a warehouse and distribution centre.",
+    scope: ["Smart NVR (4–32 ch)", "IP CCTV cameras", "Remote viewing", "Gate motor & intercom"]
   },
   {
     id: "valve-water-plant",
@@ -411,7 +415,7 @@ const PORTFOLIO_PROJECTS = [
     year: "2025",
     featured: false,
     image: "profile-assets/plant-visit.webp",
-    gallery: ["profile-assets/plant-visit.webp", "profile-assets/solar-2.webp"],
+    gallery: ["profile-assets/plant-visit.webp", "profile-assets/solar.webp", "profile-assets/solar-3.webp"],
     description: "On-site plant inspection and instrumentation assessment — process sensors, VSD drives, panel meters, and control consumables for a manufacturing line.",
     scope: ["Plant inspection", "Process sensor supply", "VSD drive consultation", "Panel meter installation"]
   },

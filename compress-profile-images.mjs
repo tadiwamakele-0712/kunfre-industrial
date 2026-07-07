@@ -4,7 +4,7 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "..", "kunfre-enterprise");
+const ROOT = path.resolve(__dirname, "assets");
 const OUT = path.join(__dirname, "profile-assets");
 
 const ASSETS = [
@@ -23,11 +23,12 @@ const ASSETS = [
   { src: "kunfre-pic/mining hose.webp", out: "mining-hose.webp", maxWidth: 360, quality: 62 },
   { src: "kunfre-pic/ptfe thread seal tape.webp", out: "ptfe-tape.webp", maxWidth: 360, quality: 62 },
   { src: "kunfre-pic/borehole installation.webp", out: "borehole.webp", maxWidth: 400, quality: 62 },
-  { src: "kunfre-pic/solar installation.webp", out: "solar.webp", maxWidth: 400, quality: 62 },
-  { src: "kunfre-pic/99cc0c95-318a-44b3-948e-34ff5fef7960.webp", out: "cctv.webp", maxWidth: 400, quality: 62 },
+  { src: "kunfre-pic/73a2ac42-8890-4a01-ba17-77b50bac26fd.webp", out: "solar.webp", maxWidth: 400, quality: 62 },
+  { src: "kunfre-pic/afd070ac-8ec3-455c-b27f-f6461051e897.webp", out: "solar-2.webp", maxWidth: 400, quality: 62 },
+  { src: "kunfre-pic/e8dd1a55-2873-46db-b605-203872c4778b.webp", out: "solar-3.webp", maxWidth: 400, quality: 62 },
+  { src: "kunfre-pic/1156cbd8-0a15-4c0f-ba10-134b3a556af1.webp", out: "cctv.webp", maxWidth: 400, quality: 62 },
   { src: "kunfre-pic/borehole pumps.webp", out: "pumps.webp", maxWidth: 400, quality: 62 },
-  { src: "kunfre-pic/solar installation (2).webp", out: "solar-2.webp", maxWidth: 360, quality: 62 },
-  { src: "kunfre-pic/28028016-7501-445d-8023-dd46563d968c.webp", out: "security.webp", maxWidth: 360, quality: 62 },
+  { src: "kunfre-pic/99cc0c95-318a-44b3-948e-34ff5fef7960.webp", out: "security.webp", maxWidth: 360, quality: 62 },
   { src: "product logo/6cf65404-71f4-4fcd-91fc-65e3c1d1b7ee.webp", out: "brand-skf.webp", maxWidth: 160, quality: 75 },
   { src: "product logo/8778f40e-2f98-4313-a114-9eb1fcc8d767.webp", out: "brand-trelleborg.webp", maxWidth: 160, quality: 75 },
   { src: "product logo/b3514d9c-0205-4151-8208-8df5900e216b.webp", out: "brand-nok.webp", maxWidth: 160, quality: 75 },
