@@ -180,7 +180,7 @@
                 url +
                 '" alt="' +
                 cat.name +
-                '" decoding="async">'
+                '" loading="lazy" decoding="async">'
               : "") +
             "</a>"
           );
@@ -209,7 +209,7 @@
                   url +
                   '" alt="' +
                   cat.name +
-                  '" decoding="async">' +
+                  '" loading="lazy" decoding="async">' +
                   "</a>" +
                   "</div>"
                 );
