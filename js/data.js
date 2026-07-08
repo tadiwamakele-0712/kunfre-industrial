@@ -7,6 +7,7 @@ const SITE = {
     "Zimbabwe's trusted industrial supplier of sealing, fasteners, valves, borehole services, instrumentation, solar, and security solutions.",
   logo: "assets/kunfre-logo.jpg",
   image: "assets/kunfre/download.jpg",
+  ogImage: "profile-assets/cover-bg.webp",
   openingHours: "Mo-Fr 08:00-17:00",
   areaServed: ["Zimbabwe", "Africa", "Asia"],
   priceRange: "$$"
