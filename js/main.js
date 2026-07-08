@@ -21,15 +21,19 @@
     return filename.replace(/\.(jpe?g|png)$/i, ".webp");
   }
 
+  function encodePath(path) {
+    return KunfreShared.encodeAssetPath(path);
+  }
+
   function picUrl(filename, cat) {
     if (cat && cat.assetBase) {
-      return encodeURI(cat.assetBase + filename);
+      return encodePath(cat.assetBase + filename);
     }
-    return PIC_BASE + encodeURIComponent(toWebp(filename));
+    return encodePath(PIC_BASE + toWebp(filename));
   }
 
   function brandLogoUrl(filename) {
-    return BRAND_LOGO_BASE + encodeURIComponent(toWebp(filename));
+    return encodePath(BRAND_LOGO_BASE + toWebp(filename));
   }
 
   function getCategoryImages(cat) {
@@ -55,10 +59,15 @@
   function buildHeroSlides() {
     if (!heroTrack) return;
 
-    CATEGORIES.forEach(function (cat) {
+    CATEGORIES.forEach(function (cat, index) {
       var slide = document.createElement("div");
       slide.className = "swiper-slide hero-slide";
-      slide.style.backgroundImage = "url('" + picUrl(cat.image, cat) + "')";
+      var img = document.createElement("img");
+      img.src = picUrl(cat.image, cat);
+      img.alt = "";
+      img.decoding = "async";
+      if (index === 0) img.setAttribute("fetchpriority", "high");
+      slide.appendChild(img);
       heroTrack.appendChild(slide);
     });
   }
@@ -171,7 +180,7 @@
                 url +
                 '" alt="' +
                 cat.name +
-                '" loading="lazy">'
+                '" decoding="async">'
               : "") +
             "</a>"
           );
@@ -200,7 +209,7 @@
                   url +
                   '" alt="' +
                   cat.name +
-                  '" loading="lazy">' +
+                  '" decoding="async">' +
                   "</a>" +
                   "</div>"
                 );

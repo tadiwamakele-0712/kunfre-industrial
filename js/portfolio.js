@@ -9,7 +9,7 @@
   var lightbox = null;
 
   function assetUrl(path) {
-    return encodeURI(path);
+    return KunfreShared.encodeAssetPath(path);
   }
 
   function buildScopeList(items) {

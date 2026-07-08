@@ -3,6 +3,16 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function encodeAssetPath(path) {
+    return String(path || "")
+      .replace(/^\//, "")
+      .split("/")
+      .map(function (segment) {
+        return encodeURIComponent(segment);
+      })
+      .join("/");
+  }
+
   function setupThemeToggle() {
     var themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) return;
@@ -133,7 +143,7 @@
   }
 
   function socialIconUrl(filename) {
-    return SOCIAL_ICON_BASE + encodeURIComponent(filename.replace(/\.(jpe?g|png)$/i, ".webp"));
+    return encodeAssetPath(SOCIAL_ICON_BASE + filename.replace(/\.(jpe?g|png)$/i, ".webp"));
   }
 
   function contactIconSvg(name) {
@@ -235,6 +245,7 @@
     buildContactIcons: buildContactIcons,
     buildSocialLinks: buildSocialLinks,
     buildFooterLinks: buildFooterLinks,
+    encodeAssetPath: encodeAssetPath,
     prefersReducedMotion: prefersReducedMotion
   };
 
