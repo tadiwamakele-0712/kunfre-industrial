@@ -90,7 +90,12 @@
   }
 
   function initAOS() {
-    if (prefersReducedMotion || typeof AOS === "undefined") return;
+    // If AOS can't or shouldn't run, reveal all [data-aos] content so the
+    // page is never left blank (e.g. iOS "Reduce Motion", CDN blocked).
+    if (prefersReducedMotion || typeof AOS === "undefined") {
+      document.documentElement.classList.add("aos-off");
+      return;
+    }
 
     AOS.init({
       duration: 650,
@@ -98,6 +103,17 @@
       once: true,
       offset: 48
     });
+  }
+
+  function refreshAOS() {
+    // Re-scan the DOM after dynamic content is injected; otherwise cards
+    // added after AOS.init() stay hidden at opacity 0.
+    if (prefersReducedMotion || typeof AOS === "undefined") return;
+    if (typeof AOS.refreshHard === "function") {
+      AOS.refreshHard();
+    } else if (typeof AOS.refresh === "function") {
+      AOS.refresh();
+    }
   }
 
   function initCountUp() {
@@ -246,6 +262,7 @@
     buildSocialLinks: buildSocialLinks,
     buildFooterLinks: buildFooterLinks,
     encodeAssetPath: encodeAssetPath,
+    refreshAOS: refreshAOS,
     prefersReducedMotion: prefersReducedMotion
   };
 

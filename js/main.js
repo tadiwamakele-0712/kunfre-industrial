@@ -470,6 +470,7 @@
     renderProducts("all");
     setupEnquiryForm();
     initLightbox();
+    if (KunfreShared && KunfreShared.refreshAOS) KunfreShared.refreshAOS();
   }
 
   if (document.readyState === "loading") {
