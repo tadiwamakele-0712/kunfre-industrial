@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-schema-page="portfolio">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Kunfre Enterprise project portfolio — industrial supply, borehole services, solar installation, CCTV security, and field services across Zimbabwe.">
   <meta name="theme-color" content="#0c2340" id="theme-color-meta">
+  <link rel="canonical" href="https://www.kunfre.com/portfolio.html">
   <title>Project Portfolio | Kunfre Enterprise</title>
   <link rel="icon" href="assets/kunfre-logo.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="assets/kunfre-logo.jpg">
-  <link rel="stylesheet" href="css/style.css?v=26">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css?v=30">
+  <script src="js/data.js?v=25"></script>
+  <script src="js/schema.js?v=1"></script>
   <script>
     (function () {
       var saved = localStorage.getItem("kunfre-theme");
@@ -31,21 +40,25 @@
       </a>
       <nav class="main-nav" aria-label="Primary">
         <a href="index.html#products">Products</a>
+        <a href="index.html#brands">Brands</a>
+        <a href="index.html#capabilities">Capabilities</a>
         <a href="index.html#about">About Us</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="company-profile.html">Company Profile</a>
         <a href="index.html#contact">Contact</a>
       </nav>
       <div class="header-actions">
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
-          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M18.4 5.6l1.4-1.4M5.6 18.4l-1.4 1.4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
-        </button>
         <a href="https://wa.me/263719333422" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"><span class="btn-text-full">WhatsApp Enquiry</span><span class="btn-text-short">WhatsApp</span></a>
         <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
       </div>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Menu">
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menu" aria-hidden="true">
       <a href="index.html#products">Products</a>
       <a href="index.html#about">About Us</a>
       <a href="index.html#contact">Contact</a>
@@ -59,7 +72,7 @@
   <section class="portfolio-hero" aria-label="Portfolio introduction">
     <div class="portfolio-hero-bg" style="background-image: url('profile-assets/cover-bg.webp')"></div>
     <div class="portfolio-hero-overlay"></div>
-    <div class="container portfolio-hero-content">
+    <div class="container portfolio-hero-content" data-aos="fade-up">
       <p class="hero-label">Our Work</p>
       <h1>Project Portfolio</h1>
       <p class="hero-desc">Delivering industrial supply, borehole services, solar installation, and security solutions across Zimbabwe's mining, agriculture, construction, and manufacturing sectors.</p>
@@ -72,19 +85,19 @@
 
   <section class="stats-band">
     <div class="container stats-grid">
-      <div class="stat-item">
-        <strong>10+</strong>
+      <div class="stat-item" data-aos="fade-up">
+        <strong data-count="10" data-suffix="+">10+</strong>
         <span>Completed Projects</span>
       </div>
-      <div class="stat-item">
-        <strong>6</strong>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="80">
+        <strong data-count="6">6</strong>
         <span>Industry Sectors</span>
       </div>
-      <div class="stat-item">
-        <strong>8</strong>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="160">
+        <strong data-count="8">8</strong>
         <span>Service Categories</span>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="240">
         <strong>Pan African and Asia</strong>
         <span>Regional Reach</span>
       </div>
@@ -93,7 +106,7 @@
 
   <section class="section" id="featured">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" data-aos="fade-up">
         <p class="eyebrow">Featured Work</p>
         <h2>Highlighted Projects</h2>
         <p>Representative supply and field service engagements demonstrating our capabilities across Zimbabwe.</p>
@@ -104,7 +117,7 @@
 
   <section class="section section-alt" id="projects">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" data-aos="fade-up">
         <p class="eyebrow">All Projects</p>
         <h2>Supply &amp; Field Service Portfolio</h2>
         <p>Filter by sector to explore our industrial supply, installation, and commissioning work.</p>
@@ -117,28 +130,28 @@
 
   <section class="section portfolio-process">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" data-aos="fade-up">
         <p class="eyebrow">How We Work</p>
         <h2>From Enquiry to Delivery</h2>
         <p>A proven approach to industrial supply and on-site field services.</p>
       </div>
       <div class="portfolio-steps">
-        <article class="portfolio-step">
+        <article class="portfolio-step" data-aos="fade-up" data-aos-delay="0">
           <span class="portfolio-step-num">01</span>
           <h3>Consultation</h3>
           <p>Technical sales and engineers assess your requirements, site conditions, and project scope.</p>
         </article>
-        <article class="portfolio-step">
+        <article class="portfolio-step" data-aos="fade-up" data-aos-delay="80">
           <span class="portfolio-step-num">02</span>
           <h3>Specification</h3>
           <p>Product selection, sizing, and certified materials matched to your operating environment.</p>
         </article>
-        <article class="portfolio-step">
+        <article class="portfolio-step" data-aos="fade-up" data-aos-delay="160">
           <span class="portfolio-step-num">03</span>
           <h3>Supply &amp; Install</h3>
           <p>Delivery of industrial products or on-site installation — boreholes, solar, CCTV, and more.</p>
         </article>
-        <article class="portfolio-step">
+        <article class="portfolio-step" data-aos="fade-up" data-aos-delay="240">
           <span class="portfolio-step-num">04</span>
           <h3>Support</h3>
           <p>Commissioning, handover documentation, and ongoing technical support when you need it.</p>
@@ -148,7 +161,7 @@
   </section>
 
   <section class="portfolio-cta">
-    <div class="container portfolio-cta-inner">
+    <div class="container portfolio-cta-inner" data-aos="fade-up">
       <div>
         <p class="eyebrow">Ready to Start?</p>
         <h2>Let's Deliver Your Next Project</h2>
@@ -208,17 +221,6 @@
     </div>
   </footer>
 
-  <dialog id="gallery-lightbox" class="gallery-lightbox" aria-label="Project gallery">
-    <button type="button" class="gallery-lightbox-close" id="gallery-lightbox-close" aria-label="Close gallery">✕</button>
-    <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" id="gallery-lightbox-prev" aria-label="Previous image">‹</button>
-    <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" id="gallery-lightbox-next" aria-label="Next image">›</button>
-    <figure class="gallery-lightbox-figure">
-      <img src="" alt="" id="gallery-lightbox-img" class="gallery-lightbox-img">
-      <figcaption id="gallery-lightbox-caption" class="gallery-lightbox-caption"></figcaption>
-      <p id="gallery-lightbox-count" class="gallery-lightbox-count" aria-live="polite"></p>
-    </figure>
-  </dialog>
-
   <a
     href="https://wa.me/263719333422?text=Hello%20Kunfre%20Enterprise%2C%20I%20would%20like%20to%20discuss%20a%20project."
     class="whatsapp-float"
@@ -230,7 +232,10 @@
     <span class="whatsapp-float-label">WhatsApp</span>
   </a>
 
-  <script src="js/data.js?v=19"></script>
-  <script src="js/portfolio.js?v=1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
+  <script src="js/shared.js?v=28"></script>
+  <script src="js/portfolio.js?v=28"></script>
 </body>
 </html>
