@@ -140,7 +140,7 @@
     if (empty) empty.hidden = projects.length > 0;
 
     initLightbox();
-    if (typeof AOS !== "undefined" && AOS.refresh) AOS.refresh();
+    if (KunfreShared && KunfreShared.refreshAOS) KunfreShared.refreshAOS();
   }
 
   function renderFilters() {
@@ -178,6 +178,7 @@
     renderFeatured();
     renderProjects();
     initLightbox();
+    if (KunfreShared && KunfreShared.refreshAOS) KunfreShared.refreshAOS();
   }
 
   if (document.readyState === "loading") {
