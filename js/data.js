@@ -1,4 +1,18 @@
-const KUNFRE_LOGO = "assets/kunfre-logo.jpg";
+const SITE = {
+  baseUrl: "https://www.kunfre.com",
+  name: "Kunfre Enterprise",
+  legalName: "Kunfre Hardware (Pvt) Ltd",
+  slogan: "Pinnacle of Reliability",
+  description:
+    "Zimbabwe's trusted industrial supplier of sealing, fasteners, valves, borehole services, instrumentation, solar, and security solutions.",
+  logo: "assets/kunfre-logo.jpg",
+  image: "assets/kunfre/download.jpg",
+  openingHours: "Mo-Fr 08:00-17:00",
+  areaServed: ["Zimbabwe", "Africa", "Asia"],
+  priceRange: "$$"
+};
+
+const KUNFRE_LOGO = SITE.logo;
 const PIC_BASE = "assets/kunfre-pic/";
 const BRAND_LOGO_BASE = "assets/product logo/";
 const SOCIAL_ICON_BASE = "assets/social icon/";
