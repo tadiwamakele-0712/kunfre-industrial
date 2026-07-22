@@ -28,7 +28,7 @@
       url: absUrl(""),
       image: absUrl(SITE.image),
       logo: absUrl(SITE.logo),
-      email: CONTACT.email,
+      email: [CONTACT.email, CONTACT.emailSales],
       telephone: [CONTACT.phone1, CONTACT.phone2],
       priceRange: SITE.priceRange,
       address: {

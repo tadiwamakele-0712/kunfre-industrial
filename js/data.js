@@ -268,6 +268,7 @@ const KEY_SERVICES = [
 
 const CONTACT = {
   email: "info.kunfrepvtltd@gmail.com",
+  emailSales: "kunfresales@gmail.com",
   phone1: "+263719333422",
   phone2: "+263783249344",
   whatsapp: "https://wa.me/263719333422",
